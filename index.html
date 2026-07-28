@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<style>
+  @keyframes reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .reveal {
+    animation: reveal 1.5s ease-out;
+  }
+
+  .reveal-delay {
+    animation: reveal 1.5s ease-out;
+    animation-delay: 0.5s;
+  }
+
+  /* Можно добавить дополнительные стили для контроля появления блоков */
+  .reveal-fast {
+    animation: reveal 1s ease-out;
+  }
+</style>
+<style>
+  @keyframes slide-up {
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .slide-up {
+    animation: slide-up 1.5s ease-out;
+  }
+
+  @keyframes scroll-text {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .scroll-text {
+    animation: scroll-text 2s ease-out;
+  }
+
+  /* Добавляем эффект прокрутки с плавным движением */
+  .scrolling-text {
+    animation: slide-up 1.5s ease-out;
+  }
+
+  .scrolling-container {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .scrolling-text {
+    position: absolute;
+    bottom: 0;
+    animation: scroll-text 5s ease-out infinite;
+  }
+</style>
+<style>
+  @keyframes scroll-text {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .scroll-text {
+    animation: scroll-text 1s ease-out;
+  }
+</style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Наследие — Пансионат для пожилых</title>
+<meta content="Пансионат «Наследие» в Воронеже: круглосуточный уход, питание, медицинское наблюдение и комфортное проживание для пожилых людей." name="description"/>
+<meta content="#38bdf8" name="theme-color"/>
+<meta content="telephone=yes" name="format-detection"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+            colors: { accent: '#10B981' }
+          }
+        }
+      };
+    </script>
+<!-- Icons & Animations -->
+<link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect"/>
+<link crossorigin="" href="https://cdn.tailwindcss.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+<style>
+:root {
+  --summer-sky: #38bdf8;
+  --summer-leaf: #22c55e;
+  --summer-sun: #facc15;
+  --summer-coral: #fb923c;
+  --summer-ink: #164e3f;
+}
+body {
+  background: linear-gradient(180deg, #effcff 0%, #fffef7 35%, #f0fdf4 100%) !important;
+  color: #183b35;
+}
+.summer-banner {
+  background: linear-gradient(90deg, #fef08a 0%, #fdba74 48%, #86efac 100%);
+  color: #14532d;
+  padding: 10px 16px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 5px 20px rgba(20, 83, 45, .12);
+}
+header > .bg-gradient-to-r {
+  background: linear-gradient(90deg, var(--summer-sky), var(--summer-leaf), var(--summer-sun)) !important;
+}
+header {
+  background: rgba(255,255,255,.94) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(34,197,94,.14);
+}
+header .container { position: relative; }
+.summer-hero {
+  background:
+    radial-gradient(circle at 12% 20%, rgba(250,204,21,.30), transparent 25%),
+    radial-gradient(circle at 90% 18%, rgba(56,189,248,.22), transparent 28%),
+    linear-gradient(135deg, #fffbeb 0%, #ecfccb 48%, #cffafe 100%);
+}
+.summer-hero::after {
+  content: '🌿';
+  position: absolute;
+  right: 5%;
+  bottom: 4%;
+  font-size: clamp(3rem, 8vw, 7rem);
+  opacity: .12;
+  transform: rotate(-12deg);
+}
+.summer-photo-section {
+  background: linear-gradient(135deg, #ecfeff 0%, #fefce8 50%, #f0fdf4 100%);
+}
+.summer-photo-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: clamp(2rem, 5vw, 4rem);
+  border-radius: 32px;
+  background: rgba(255,255,255,.9);
+  border: 1px solid rgba(34,197,94,.22);
+  box-shadow: 0 24px 70px rgba(14,116,144,.13);
+  overflow: hidden;
+  position: relative;
+}
+.summer-photo-card::before {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  right: -80px;
+  top: -90px;
+  background: linear-gradient(135deg, rgba(250,204,21,.35), rgba(251,146,60,.22));
+}
+.summer-photo-icon {
+  width: 112px;
+  height: 112px;
+  border-radius: 28px;
+  display: grid;
+  place-items: center;
+  font-size: 3.4rem;
+  color: white;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  box-shadow: 0 18px 35px rgba(37,99,235,.24);
+  position: relative;
+  z-index: 1;
+}
+.summer-eyebrow {
+  color: #15803d;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .8rem;
+  font-weight: 800;
+  margin-bottom: .6rem;
+}
+.summer-vk-button {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .95rem 1.5rem;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 800;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  box-shadow: 0 14px 30px rgba(37,99,235,.24);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.summer-vk-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 38px rgba(37,99,235,.32);
+}
+#news h3, #news p { color: inherit !important; text-shadow: none !important; }
+#services, #advantages, #testimonials, #news, #pricing, #faq, #contact {
+  position: relative;
+}
+.rounded-2xl, .rounded-3xl {
+  border-color: rgba(34,197,94,.16);
+}
+footer#contacts {
+  background: linear-gradient(135deg, #14532d 0%, #164e63 55%, #0f3d31 100%) !important;
+}
+@media (max-width: 1023px) {
+  #main-nav:not(.hidden) {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    top: calc(100% + .5rem);
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .25rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 18px 50px rgba(20,83,45,.18);
+  }
+  #main-nav:not(.hidden) a {
+    padding: .75rem 1rem;
+    border-radius: 12px;
+  }
+  #main-nav:not(.hidden) a:hover { background: #f0fdf4; }
+}
+@media (max-width: 700px) {
+  .summer-photo-card { grid-template-columns: 1fr; text-align: center; }
+  .summer-photo-icon { margin: 0 auto; }
+  .summer-vk-button { justify-content: center; width: 100%; }
+  .summer-banner { font-size: .88rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+html { scroll-behavior: smooth; }
+.container { max-width: 1200px; margin-inline: auto; padding-inline: 1rem; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.animate-fade-in-up { animation: fadeInUp .75s ease-out both; }
+.animate-fade-in-down { animation: fadeInDown .75s ease-out both; }
+.animate-slide-in-left { animation: slideInLeft .75s ease-out both; }
+.animate-slide-in-right { animation: slideInRight .75s ease-out both; }
+.animate-float { animation: float 3.2s ease-in-out infinite; }
+button, a { transition: transform .25s ease, box-shadow .25s ease, color .25s ease, background-color .25s ease; }
+button:hover { transform: translateY(-2px); }
+input, textarea {
+  transition: border-color .25s ease, box-shadow .25s ease;
+  background: rgba(255,255,255,.96);
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #22c55e !important;
+  box-shadow: 0 0 0 4px rgba(34,197,94,.13);
+}
+.faq-item {
+  border-bottom: 1px solid rgba(34,197,94,.18);
+  padding: 1.35rem 0;
+}
+.faq-toggle {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  user-select: none;
+}
+.faq-toggle:focus-visible { outline: 3px solid rgba(56,189,248,.35); outline-offset: 6px; border-radius: 8px; }
+.faq-content { display: none; margin-top: 1rem; }
+.faq-content.active { display: block; animation: fadeInUp .35s ease-out; }
+.faq-icon { color: #16a34a; transition: transform .25s ease; }
+.faq-icon.active { transform: rotate(180deg); }
+.fa-heart { color: #fb7185; }
+
+
+.topbar-inner { gap: 1rem; }
+.hero-actions { flex-wrap: wrap; gap: .75rem; }
+.hero-actions > * { margin-left: 0 !important; }
+@media (max-width: 700px) {
+  .topbar-inner { justify-content: center !important; }
+  .topbar-clock { display: none !important; }
+  .topbar-inner > div:last-child { display: none !important; }
+  .main-header-row { padding-block: .75rem !important; }
+  .header-cta { display: none !important; }
+  .hero-actions { flex-direction: column; align-items: stretch !important; }
+  .hero-actions > * { width: 100%; text-align: center; }
+  #hero h2 { font-size: 2.55rem; line-height: 1.06; }
+  #hero { padding-top: 3rem; padding-bottom: 3rem; }
+}
+</style></head>
+<body class="antialiased text-gray-800">
+<noscript><div style="padding:12px;text-align:center;background:#fef3c7;color:#78350f">Для работы анимаций и формы включите JavaScript.</div></noscript>
+<div class="summer-banner">☀️ <strong>Лето заботы и душевного тепла</strong> — уют, внимание и хорошее настроение каждый день</div>
+<!-- Topbar -->
+<header class="bg-white sticky top-0 z-50" id="header">
+<div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2">
+<div class="container flex justify-between items-center text-sm topbar-inner">
+<div class="flex items-center space-x-6">
+<div class="flex items-center"><i class="fa-solid fa-phone mr-2"></i><span><a class="hover:text-emerald-200" href="tel:+79525425892">+7 (952) 542-58-92</a> <span class="text-sm text-white/80 ml-2">Татьяна</span></span></div>
+<div class="flex items-center topbar-clock"><i class="fa-solid fa-clock mr-2"></i><span>Работаем круглосуточно</span></div>
+</div>
+<div class="flex items-center space-x-4">
+<a class="hover:text-emerald-200" href="https://vk.com/your_group" rel="noopener" target="_blank"> <i class="fa-brands fa-vk"></i> </a>
+<a class="hover:text-emerald-200" href="https://telegram.org/" rel="noopener" target="_blank"> <i class="fa-brands fa-telegram"></i> </a>
+<a class="hover:text-emerald-200" href="https://api.whatsapp.com/send/?phone=79525425892&amp;text=Обращение+из+Яндекс+Карт%0AЗдравствуйте%21+Меня+заинтересовало+ваше+предложение&amp;type=phone_number&amp;app_absent=0" rel="noopener" target="_blank"> <i class="fa-brands fa-whatsapp"></i> </a>
+</div>
+</div>
+</div>
+<div class="container flex justify-between items-center py-4 main-header-row">
+<div class="flex items-center space-x-3">
+<div class="bg-gradient-to-br from-emerald-500 to-teal-600 p-3 rounded-xl shadow-lg transform hover:scale-110 transition-transform duration-300"><i class="fa-solid fa-heart text-white text-2xl animate-float"></i></div>
+<div class="animate-slide-in-left">
+<h1 class="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Наследие</h1>
+<p class="text-sm text-gray-500">Пансионат для пожилых</p>
+</div>
+</div>
+<nav class="hidden lg:flex items-center space-x-8" id="main-nav">
+<a class="hover:text-emerald-600" href="#services">Услуги</a>
+<a class="hover:text-emerald-600" href="#advantages">Преимущества</a>
+<a class="hover:text-emerald-600" href="#news">Новости</a>
+<a class="hover:text-emerald-600" href="#testimonials">Отзывы</a>
+<a class="hover:text-emerald-600" href="#photos-vk">Фото в ВК</a>
+<a class="hover:text-emerald-600" href="#contacts">Контакты</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-full font-semibold header-cta" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Записаться на экскурсию</button>
+<button class="lg:hidden p-2 rounded-lg hover:bg-gray-200" id="menu-toggle"><i class="fa-solid fa-bars text-xl"></i></button>
+</div>
+</div>
+</header>
+<!-- Hero -->
+<section class="relative summer-hero py-16 overflow-hidden" data-aos="fade-up" id="hero">
+<div class="absolute inset-0 opacity-30">
+<div class="absolute top-20 left-10 w-72 h-72 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl animate-float" style="animation-duration: 7s;"></div>
+<div class="absolute -bottom-8 right-10 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl animate-float" style="animation-duration: 9s; animation-delay: 2s;"></div>
+</div>
+<div class="container grid lg:grid-cols-2 gap-8 items-center relative z-10 hero-actions" data-aos="fade-left">
+<div class="animate-slide-in-left" data-aos="fade-right">
+<div class="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 hover:shadow-lg transition-all duration-300 cursor-default">☀️ Тёплая забота каждый день</div>
+<h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">Забота и комфорт для ваших <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 animate-pulse">близких</span></h2>
+<p class="text-xl text-gray-600 mb-6 leading-relaxed">Профессиональный уход, медицинское наблюдение 24/7 и домашняя атмосфера.</p>
+<div class="flex items-center space-x-4 mb-8">
+<button class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Записаться на экскурсию</button>
+<a class="bg-white text-emerald-600 border-2 border-emerald-600 px-8 py-3 rounded-full font-bold hover:bg-emerald-50 transition-all duration-300" href="tel:+79525425892">Позвонить</a>
+</div>
+<div class="flex items-center animate-fade-in-up" style="animation-delay: 0.3s;">
+<div class="flex -space-x-3">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white font-bold border-4 border-white shadow-lg">А</div>
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold border-4 border-white shadow-lg">М</div>
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white font-bold border-4 border-white shadow-lg">О</div>
+</div>
+<div class="ml-4">
+<div class="flex text-amber-400 text-sm font-semibold"> <i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star"></i> </div>
+<p class="text-sm text-gray-600 font-medium">100+ довольных семей</p>
+</div>
+</div>
+</div>
+<div class="animate-slide-in-right" data-aos="fade-left">
+<div class="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 hover:shadow-emerald-200/50">
+<div class="bg-gradient-to-br from-emerald-300 to-teal-400 w-full h-80 flex items-center justify-center relative">
+<i class="fa-solid fa-sun text-amber-300 text-8xl opacity-40 absolute"></i>
+<div class="text-center relative z-10">
+<i class="fa-solid fa-heart text-white text-6xl mb-4"></i>
+<p class="text-white font-bold text-xl">Добро пожаловать!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services -->
+<section class="py-20 bg-gradient-to-b from-white via-emerald-50/30 to-white border-t-2 border-b-2 border-emerald-100" id="services">
+<div class="container">
+<div class="text-center mb-16">
+<h3 class="text-4xl font-bold mb-4 animate-fade-in-down" data-aos="fade-up">Наши услуги</h3>
+<div class="h-1 w-24 bg-gradient-to-r from-emerald-600 to-teal-600 mx-auto mb-4 rounded-full"></div>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed scroll-text">Комплексный уход и забота — Мы предлагаем полный спектр услуг для комфортного проживания и качественного ухода за пожилыми людьми.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="p-6 rounded-2xl shadow bg-white hover:shadow-2xl transition-all duration-300 hover:bg-gradient-to-br hover:from-emerald-50 hover:to-transparent animate-fade-in-up" style="animation-delay: 0.1s;">
+<div class="flex items-start space-x-4">
+<div class="bg-gradient-to-br from-emerald-600 to-emerald-700 p-4 rounded-xl text-white flex-shrink-0 transform group-hover:scale-110 transition-transform"><i class="fa-solid fa-stethoscope text-2xl"></i></div>
+<div class="flex-1">
+<h4 class="font-bold mb-2 text-lg">Медицинский уход</h4>
+<p class="text-gray-600 mb-3">Круглосуточное медицинское наблюдение квалифицированными специалистами, регулярные осмотры и контроль состояния здоровья.</p>
+<ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+<li>Контроль приема лекарств</li>
+<li>Измерение давления и сахара</li>
+<li>Процедуры и инъекции</li>
+<li>Вызов врача при необходимости</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-2xl shadow bg-white hover:shadow-2xl transition-all duration-300 hover:bg-gradient-to-br hover:from-amber-50 hover:to-transparent animate-fade-in-up" style="animation-delay: 0.2s;">
+<div class="flex items-start space-x-4">
+<div class="bg-gradient-to-br from-amber-600 to-amber-700 p-4 rounded-xl text-white flex-shrink-0"><i class="fa-solid fa-utensils text-2xl"></i></div>
+<div class="flex-1">
+<h4 class="font-bold mb-2 text-lg">Питание</h4>
+<p class="text-gray-600 mb-3">Сбалансированное 5-разовое питание с учетом индивидуальных потребностей и медицинских рекомендаций.</p>
+<ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+<li>Диетическое меню</li>
+<li>Свежие продукты</li>
+<li>Учет аллергий</li>
+<li>Домашняя кухня</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-2xl shadow bg-white hover:shadow-2xl transition-all duration-300 hover:bg-gradient-to-br hover:from-blue-50 hover:to-transparent animate-fade-in-up" style="animation-delay: 0.3s;">
+<div class="flex items-start space-x-4">
+<div class="bg-gradient-to-br from-blue-600 to-blue-700 p-4 rounded-xl text-white flex-shrink-0"><i class="fa-solid fa-dumbbell text-2xl"></i></div>
+<div class="flex-1">
+<h4 class="font-bold mb-2 text-lg">Реабилитация</h4>
+<p class="text-gray-600 mb-3">Программы восстановления после травм и операций, физиотерапия и занятия с инструкторами ЛФК.</p>
+<ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+<li>Лечебная физкультура</li>
+<li>Массаж и физиотерапия</li>
+<li>Восстановление после инсульта</li>
+<li>Тренировка памяти</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="p-6 rounded-2xl shadow bg-white hover:shadow-2xl transition-all duration-300 hover:bg-gradient-to-br hover:from-purple-50 hover:to-transparent animate-fade-in-up" style="animation-delay: 0.4s;">
+<div class="flex items-start space-x-4">
+<div class="bg-gradient-to-br from-purple-600 to-purple-700 p-4 rounded-xl text-white flex-shrink-0"><i class="fa-solid fa-hands text-2xl"></i></div>
+<div class="flex-1">
+<h4 class="font-bold mb-2 text-lg">Личная гигиена</h4>
+<p class="text-gray-600 mb-3">Ежедневная помощь в проведении гигиенических процедур с соблюдением достоинства и комфорта постояльца.</p>
+<ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+<li>Помощь в умывании</li>
+<li>Смена белья</li>
+<li>Уход за кожей</li>
+<li>Стрижка и бритье</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-2xl shadow bg-white hover:shadow-2xl transition-all duration-300 hover:bg-gradient-to-br hover:from-pink-50 hover:to-transparent animate-fade-in-up" style="animation-delay: 0.5s;">
+<div class="flex items-start space-x-4">
+<div class="bg-gradient-to-br from-pink-600 to-pink-700 p-4 rounded-xl text-white flex-shrink-0"><i class="fa-solid fa-music text-2xl"></i></div>
+<div class="flex-1">
+<h4 class="font-bold mb-2 text-lg">Досуг и развлечения</h4>
+<p class="text-gray-600 mb-3">Разнообразная культурная программа, творческие занятия и мероприятия для активного времяпрепровождения.</p>
+<ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+<li>Творческие мастерские</li>
+<li>Музыкальные вечера</li>
+<li>Настольные игры</li>
+<li>Прогулки на свежем воздухе</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-2xl shadow bg-white hover:shadow-2xl transition-all duration-300 hover:bg-gradient-to-br hover:from-cyan-50 hover:to-transparent animate-fade-in-up" style="animation-delay: 0.6s;">
+<div class="flex items-start space-x-4">
+<div class="bg-gradient-to-br from-cyan-600 to-cyan-700 p-4 rounded-xl text-white flex-shrink-0"><i class="fa-solid fa-brain text-2xl"></i></div>
+<div class="flex-1">
+<h4 class="font-bold mb-2 text-lg">Психологическая поддержка</h4>
+<p class="text-gray-600 mb-3">Работа с психологом для адаптации, поддержания ментального здоровья и эмоционального комфорта.</p>
+<ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+<li>Индивидуальные консультации</li>
+<li>Групповые занятия</li>
+<li>Арт-терапия</li>
+<li>Работа с деменцией</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="text-center mt-6">
+<a class="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-10 py-3 rounded-full font-semibold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300" href="#contact">Получить консультацию</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Advantages -->
+<section class="py-20 bg-gradient-to-b from-white to-emerald-50 border-t-2 border-emerald-100" id="advantages">
+<div class="container">
+<h3 class="text-4xl font-bold mb-4 animate-fade-in-down" data-aos="fade-up">Почему выбирают нас</h3>
+<div class="h-1 w-24 bg-gradient-to-r from-emerald-600 to-teal-600 mb-6 rounded-full"></div>
+<p class="text-gray-600 mb-12 text-lg">15 лет опыта работы и тысячи довольных семей доверяют нам заботу о своих близких</p>
+<div class="grid md:grid-cols-4 gap-6 mb-16">
+<div class="p-6 rounded-2xl shadow-lg bg-white hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-gradient-to-br hover:from-emerald-50 hover:to-white animate-fade-in-up">
+<div class="flex items-start space-x-4">
+<div class="bg-gradient-to-br from-emerald-600 to-teal-600 p-3 rounded-xl text-white flex-shrink-0 transform group-hover:rotate-12 transition-transform"><i class="fa-solid fa-home text-2xl"></i></div>
+<div>
+<div class="font-semibold text-lg">Домашняя атмосфера</div>
+<div class="text-sm text-gray-600 leading-relaxed">Уютные комнаты, общие зоны и благоустроенный сад.</div>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-2xl shadow-lg bg-white hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-gradient-to-br hover:from-amber-50 hover:to-white animate-fade-in-up" style="animation-delay: 0.1s;">
+<div class="flex items-start space-x-4">
+<div class="bg-gradient-to-br from-amber-600 to-orange-600 p-3 rounded-xl text-white flex-shrink-0"><i class="fa-solid fa-user-doctor text-2xl"></i></div>
+<div>
+<div class="font-semibold text-lg">Квалифицированный персонал</div>
+<div class="text-sm text-gray-600 leading-relaxed">50+ специалистов: врачи, медсестры, психологи и инструкторы ЛФК.</div>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-2xl shadow-lg bg-white hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-gradient-to-br hover:from-blue-50 hover:to-white animate-fade-in-up" style="animation-delay: 0.2s;">
+<div class="flex items-start space-x-4">
+<div class="bg-gradient-to-br from-blue-600 to-indigo-600 p-3 rounded-xl text-white flex-shrink-0"><i class="fa-solid fa-shield-halved text-2xl"></i></div>
+<div>
+<div class="font-semibold text-lg">Видеонаблюдение и безопасность</div>
+<div class="text-sm text-gray-600 leading-relaxed">Круглосуточная охрана, тревожные кнопки и пожарная сигнализация.</div>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-2xl shadow-lg bg-white hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-gradient-to-br hover:from-purple-50 hover:to-white animate-fade-in-up" style="animation-delay: 0.3s;">
+<div class="flex items-start space-x-4">
+<div class="bg-gradient-to-br from-purple-600 to-pink-600 p-3 rounded-xl text-white flex-shrink-0"><i class="fa-solid fa-hand-holding-heart text-2xl"></i></div>
+<div>
+<div class="font-semibold text-lg">Индивидуальный подход</div>
+<div class="text-sm text-gray-600 leading-relaxed">Персональные планы ухода, учет привычек и потребностей каждого постояльца.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-3xl p-12 shadow-lg border-2 border-emerald-200">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="text-center p-4 hover:scale-110 transition-transform duration-300">
+<div class="text-4xl font-bold text-emerald-600 animate-pulse">15+</div>
+<div class="text-sm text-gray-600 font-medium mt-2">Лет опыта</div>
+</div>
+<div class="text-center p-4 hover:scale-110 transition-transform duration-300">
+<div class="text-4xl font-bold text-teal-600 animate-pulse" style="animation-delay: 0.2s;">200+</div>
+<div class="text-sm text-gray-600 font-medium mt-2">Довольных семей</div>
+</div>
+<div class="text-center p-4 hover:scale-110 transition-transform duration-300">
+<div class="text-4xl font-bold text-blue-600 animate-pulse" style="animation-delay: 0.4s;">50+</div>
+<div class="text-sm text-gray-600 font-medium mt-2">Специалистов</div>
+</div>
+<div class="text-center p-4 hover:scale-110 transition-transform duration-300">
+<div class="text-4xl font-bold text-purple-600 animate-pulse" style="animation-delay: 0.6s;">24/7</div>
+<div class="text-sm text-gray-600 font-medium mt-2">Круглосуточно</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-20 bg-gradient-to-b from-emerald-50 to-white" id="testimonials">
+<div class="container">
+<h3 class="text-4xl font-bold mb-4 text-center animate-fade-in-down" data-aos="fade-up">Отзывы наших клиентов</h3>
+<div class="h-1 w-24 bg-gradient-to-r from-emerald-600 to-teal-600 mb-8 rounded-full mx-auto"></div>
+<div style="display:flex;justify-content:center;border-radius:20px;overflow:hidden;min-height:420px;">
+<iframe id="myReviews__block-widget" loading="lazy" style="width:100%;min-height:420px;max-width:1170px;border:none;outline:none;padding:0;margin:0" title="Отзывы о пансионате «Наследие»">
+</iframe>
+</div>
+<div class="mt-12 p-8 bg-gradient-to-r from-emerald-100/50 to-teal-100/50 rounded-3xl text-center border-2 border-emerald-300 animate-fade-in-up">
+<div class="text-2xl font-bold mb-2 text-gray-900">⭐ Рейтинг <span class="text-emerald-600">5.0</span> из 5.0</div>
+<div class="text-gray-600 font-medium">На основе 34+ отзывов наших клиентов</div>
+</div>
+</div>
+</section>
+<script>
+      window.addEventListener('load', function () {
+        try {
+          const script = document.createElement('script');
+          script.src = 'https://myreviews.dev/widget/dist/index.js';
+          script.defer = true;
+          script.onload = function () {
+            if (window.myReviews && typeof window.myReviews.BlockWidget === 'function') {
+              new window.myReviews.BlockWidget({
+                uuid: '8dca7119-b273-4c86-b0a8-ff46b57eb099',
+                name: 'g756665',
+                additionalFrame: 'none',
+                lang: 'ru',
+                widgetId: '1'
+              }).init();
+            }
+          };
+          document.body.appendChild(script);
+        } catch (error) {
+          console.warn('Не удалось загрузить виджет отзывов:', error);
+        }
+      });
+    </script>
+<!-- News -->
+<section class="py-20 bg-gradient-to-b from-white via-cyan-50/20 to-white" id="news">
+<div class="container">
+<h3 class="text-4xl font-bold mb-4 text-center animate-fade-in-down" data-aos="fade-up">Жизнь в пансионате</h3>
+<div class="h-1 w-24 bg-gradient-to-r from-emerald-600 to-teal-600 mb-6 rounded-full mx-auto"></div>
+<p class="text-gray-600 mb-12 text-lg text-center">Мероприятия, праздники и повседневные радости наших постояльцев</p>
+<div class="max-w-3xl mx-auto" id="vk-news-container">
+<div class="p-8 rounded-3xl bg-white shadow-lg border border-emerald-100 text-center">
+<i class="fa-brands fa-vk text-5xl text-blue-600 mb-4"></i>
+<h4 class="text-2xl font-bold text-gray-900 mb-3">Свежие новости — в нашей группе ВКонтакте</h4>
+<p class="text-gray-600 mb-6">Фотографии мероприятий, праздников и повседневной жизни пансионата публикуются в официальном сообществе.</p>
+<a class="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg" href="https://vk.com/your_group" rel="noopener" target="_blank">Открыть сообщество</a>
+</div>
+</div>
+<div class="text-center mt-12">
+<a class="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300" href="https://vk.com/your_group" rel="noopener" target="_blank">
+        Больше новостей в ВКонтакте →
+      </a>
+</div>
+</div>
+</section>
+<section aria-labelledby="photos-vk-title" class="py-20 summer-photo-section" id="photos-vk">
+<div class="container">
+<div class="summer-photo-card" data-aos="zoom-in">
+<div aria-hidden="true" class="summer-photo-icon"><i class="fa-brands fa-vk"></i></div>
+<div>
+<p class="summer-eyebrow">Фотографии пансионата</p>
+<h3 class="text-4xl font-bold mb-4" id="photos-vk-title">Все фотографии можете посмотреть в ВК</h3>
+<p class="text-lg text-gray-600 mb-7 max-w-2xl">Там мы публикуем фотографии территории, комнат, мероприятий и повседневной жизни наших постояльцев.</p>
+<!-- Замените ссылку ниже на адрес вашей группы ВКонтакте -->
+<a class="summer-vk-button" href="https://vk.com/your_group" rel="noopener" target="_blank">
+<i aria-hidden="true" class="fa-brands fa-vk"></i>
+          Смотреть все фотографии
+        </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing -->
+<section class="py-20 bg-gradient-to-b from-white to-amber-50 border-t-2 border-amber-200" id="pricing">
+<div class="container">
+<h3 class="text-4xl font-bold mb-4 animate-fade-in-down" data-aos="fade-up">Стоимость проживания</h3>
+<div class="h-1 w-24 bg-gradient-to-r from-emerald-600 to-teal-600 mb-6 rounded-full"></div>
+<p class="text-gray-600 mb-12 text-lg">Прозрачные цены — все услуги включены в стоимость</p>
+<div class="grid md:grid-cols-3 gap-8 mb-8">
+<div class="p-8 rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 transform animate-fade-in-up" style="animation-delay: 0.1s;">
+<div class="text-sm uppercase text-gray-500 mb-3 font-bold tracking-widest">Стандарт</div>
+<div class="text-4xl font-bold mb-6 text-gray-900">45 000 <span class="text-lg text-gray-500 font-normal">₽/мес</span></div>
+<ul class="text-gray-700 mb-8 space-y-3 font-medium">
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>Проживание в 2-местной комнате</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>5-разовое питание</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>Медицинское наблюдение</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>Досуговые мероприятия</li>
+</ul>
+<button class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" type="button">Выбрать тариф</button>
+</div>
+<div class="p-8 rounded-3xl bg-gradient-to-br from-emerald-50 to-white shadow-2xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform border-2 border-emerald-600 animate-fade-in-up" style="animation-delay: 0.2s;">
+<div class="flex items-center justify-between mb-4">
+<div class="text-sm uppercase text-gray-500 font-bold tracking-widest">Комфорт</div>
+<span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs px-3 py-1 rounded-full font-bold">★ Популярный</span>
+</div>
+<div class="text-4xl font-bold mb-6 text-gray-900">65 000 <span class="text-lg text-gray-500 font-normal">₽/мес</span></div>
+<ul class="text-gray-700 mb-8 space-y-3 font-medium">
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>Проживание в 1-местной комнате</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>5-разовое диетическое питание</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>Круглосуточное медицинское наблюдение</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>Индивидуальный уход</li>
+</ul>
+<button class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" type="button">Выбрать тариф</button>
+</div>
+<div class="p-8 rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 transform animate-fade-in-up" style="animation-delay: 0.3s;">
+<div class="text-sm uppercase text-gray-500 mb-3 font-bold tracking-widest">Премиум</div>
+<div class="text-4xl font-bold mb-6 text-gray-900">85 000 <span class="text-lg text-gray-500 font-normal">₽/мес</span></div>
+<ul class="text-gray-700 mb-8 space-y-3 font-medium">
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>Проживание в люкс-номере</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>Индивидуальное меню</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>Персональная медсестра</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-3"></i>Ежедневный массаж</li>
+</ul>
+<button class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" type="button">Выбрать тариф</button>
+</div>
+</div>
+<div class="p-8 rounded-3xl bg-gradient-to-r from-amber-100/50 via-emerald-100/30 to-teal-100/50 shadow-xl border-2 border-dashed border-amber-300 text-center hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fade-in-up">
+<div class="text-2xl font-bold mb-3 text-gray-900">🎉 Специальное предложение</div>
+<div class="text-gray-700 mb-6 text-lg leading-relaxed">Скидка <strong>15%</strong> при оплате за 3 месяца вперед. <br/>Бесплатная экскурсия. <strong>Первая неделя проживания в подарок</strong>.</div>
+<a class="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300" href="#contact">Узнать подробнее</a>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section class="py-20 bg-gradient-to-b from-white to-emerald-50" id="faq">
+<div class="container">
+<h3 class="text-4xl font-bold mb-4 animate-fade-in-down" data-aos="fade-up">Частые вопросы</h3>
+<div class="h-1 w-24 bg-gradient-to-r from-emerald-600 to-teal-600 mb-6 rounded-full"></div>
+<div class="max-w-4xl mx-auto text-gray-700">
+<div class="faq-item animate-fade-in-up">
+<div aria-expanded="false" class="faq-toggle" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleFaq(this)}" role="button" tabindex="0">
+<span class="text-lg font-bold text-gray-900">Можно ли навещать родственников?</span>
+<i class="fa-solid fa-chevron-down faq-icon"></i>
+</div>
+<div class="faq-content text-gray-700 leading-relaxed">
+<p>Да, конечно! Мы работаем без выходных, и вы можете навещать своих близких в любое удобное время с 9:00 до 21:00. Также возможны видеозвонки в любое время суток.</p>
+</div>
+</div>
+<div class="faq-item animate-fade-in-up" style="animation-delay: 0.1s;">
+<div aria-expanded="false" class="faq-toggle" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleFaq(this)}" role="button" tabindex="0">
+<span class="text-lg font-bold text-gray-900">Какие документы нужны для заселения?</span>
+<i class="fa-solid fa-chevron-down faq-icon"></i>
+</div>
+<div class="faq-content text-gray-700 leading-relaxed">
+<p>Паспорт постояльца, полис ОМС, медицинская карта с результатами анализов. Мы поможем с оформлением документов.</p>
+</div>
+</div>
+<div class="faq-item animate-fade-in-up" style="animation-delay: 0.2s;">
+<div aria-expanded="false" class="faq-toggle" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleFaq(this)}" role="button" tabindex="0">
+<span class="text-lg font-bold text-gray-900">Как организовано медицинское обслуживание?</span>
+<i class="fa-solid fa-chevron-down faq-icon"></i>
+</div>
+<div class="faq-content text-gray-700 leading-relaxed">
+<p>В штате пансионата врачи-терапевты и медсестры, круглосуточное наблюдение, контроль приема лекарств, измерение давления и сахара.</p>
+</div>
+</div>
+<div class="faq-item animate-fade-in-up" style="animation-delay: 0.3s;">
+<div aria-expanded="false" class="faq-toggle" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleFaq(this)}" role="button" tabindex="0">
+<span class="text-lg font-bold text-gray-900">Как организовано питание?</span>
+<i class="fa-solid fa-chevron-down faq-icon"></i>
+</div>
+<div class="faq-content text-gray-700 leading-relaxed">
+<p>5-разовое питание: завтрак, второй завтрак, обед, полдник, ужин. Меню составлено диетологом с учетом потребностей.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Form -->
+<section class="py-20 bg-gradient-to-b from-white to-emerald-50" id="contact">
+<div class="container">
+<h3 class="text-4xl font-bold mb-4 animate-fade-in-down" data-aos="fade-up">Свяжитесь с нами</h3>
+<div class="h-1 w-24 bg-gradient-to-r from-emerald-600 to-teal-600 mb-6 rounded-full"></div>
+<p class="text-gray-600 mb-12 text-lg">Мы всегда рады ответить на ваши вопросы и провести экскурсию по пансионату</p>
+<div class="grid md:grid-cols-2 gap-8">
+<form class="space-y-4 bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-300 animate-slide-in-left" id="contact-form" onsubmit="submitForm(event)">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<input aria-label="Ваше имя" autocomplete="name" class="border-2 border-emerald-100 p-4 rounded-xl focus:border-emerald-600 focus:ring-0 font-medium transition-all duration-300" name="name" placeholder="Ваше имя" required="" type="text"/>
+<input aria-label="Телефон" autocomplete="tel" class="border-2 border-emerald-100 p-4 rounded-xl focus:border-emerald-600 focus:ring-0 font-medium transition-all duration-300" name="phone" placeholder="Телефон" required="" type="tel"/>
+</div>
+<input aria-label="Email" autocomplete="email" class="border-2 border-emerald-100 p-4 rounded-xl w-full focus:border-emerald-600 focus:ring-0 font-medium transition-all duration-300" name="email" placeholder="Email" required="" type="email"/>
+<input aria-label="Удобная дата визита" class="border-2 border-emerald-100 p-4 rounded-xl w-full focus:border-emerald-600 focus:ring-0 font-medium transition-all duration-300" name="date" placeholder="Удобная дата визита" required="" type="date"/>
+<textarea aria-label="Комментарий" class="border-2 border-emerald-100 p-4 rounded-xl w-full h-28 focus:border-emerald-600 focus:ring-0 font-medium transition-all duration-300 resize-none" name="message" placeholder="Комментарий"></textarea>
+<div class="text-sm text-gray-500 p-3 bg-gray-50 rounded-xl">✓ Данные не сохраняются на сайте: сообщение откроется в Telegram.</div>
+<button class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 rounded-full font-bold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg" type="submit">Отправить через Telegram</button>
+<div class="text-sm text-green-600 hidden p-4 bg-green-50 rounded-xl text-center font-medium" id="form-message">Заявка будет открыта в Telegram. Для отправки подтвердите сообщение в приложении.</div>
+</form>
+<div class="p-8 rounded-3xl bg-white shadow-xl hover:shadow-2xl transition-all duration-300 animate-slide-in-right">
+<h4 class="font-bold mb-6 text-2xl text-emerald-600">Наши контакты</h4>
+<div class="space-y-6">
+<div class="flex items-start space-x-4 p-4 bg-emerald-50 rounded-2xl hover:bg-emerald-100 transition-colors duration-300">
+<div class="bg-gradient-to-br from-emerald-600 to-teal-600 p-3 rounded-xl text-white flex-shrink-0"><i class="fa-solid fa-phone text-xl"></i></div>
+<div>
+<p class="text-sm text-gray-500 font-medium">Телефон</p>
+<p class="font-bold text-lg text-gray-800">
+<a class="hover:text-emerald-600 transition-colors" href="tel:+79525425892">+7 (952) 542-58-92</a> <span class="text-sm text-gray-500">— Татьяна</span><br/>
+<a class="hover:text-emerald-600 transition-colors" href="tel:+79515512202">+7 (951) 551-22-02</a> <span class="text-sm text-gray-500">— тг/вайбер</span>
+</p>
+<p class="text-sm text-gray-600">(круглосуточно)</p>
+</div>
+</div>
+<div class="flex items-start space-x-4 p-4 bg-blue-50 rounded-2xl hover:bg-blue-100 transition-colors duration-300">
+<div class="bg-gradient-to-br from-blue-600 to-indigo-600 p-3 rounded-xl text-white flex-shrink-0"><i class="fa-solid fa-envelope text-xl"></i></div>
+<div>
+<p class="text-sm text-gray-500 font-medium">Email</p>
+<p class="font-bold text-lg text-gray-800"><a class="hover:text-blue-600 transition-colors" href="mailto:info@teplydom.ru">info@teplydom.ru</a></p>
+<p class="text-sm text-gray-600">Ответим в течение часа</p>
+</div>
+</div>
+<div class="flex items-start space-x-4 p-4 bg-purple-50 rounded-2xl hover:bg-purple-100 transition-colors duration-300">
+<div class="bg-gradient-to-br from-purple-600 to-pink-600 p-3 rounded-xl text-white flex-shrink-0"><i class="fa-solid fa-map-pin text-xl"></i></div>
+<div>
+<p class="text-sm text-gray-500 font-medium">Адрес</p>
+<p class="font-bold text-lg text-gray-800">г. Воронеж, Лебедянская ул., 8</p>
+<p class="text-sm text-gray-600">Время работы: 24/7</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t-2 border-gray-100">
+<p class="text-sm text-gray-500 mb-4 font-medium">Свяжитесь с нами в соцсетях:</p>
+<div class="flex items-center space-x-3">
+<a aria-label="ВКонтакте" class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center text-white hover:shadow-lg transform hover:scale-110 transition-all duration-300" href="https://vk.com/your_group" rel="noopener" target="_blank" title="ВКонтакте">
+<i class="fa-brands fa-vk text-lg"></i>
+</a>
+<a aria-label="Telegram" class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white hover:shadow-lg transform hover:scale-110 transition-all duration-300" href="https://telegram.org/" rel="noopener" target="_blank" title="Telegram">
+<i class="fa-brands fa-telegram text-lg"></i>
+</a>
+<a aria-label="Viber" class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white hover:shadow-lg transform hover:scale-110 transition-all duration-300" href="https://viber.click/79525425892" rel="noopener" target="_blank" title="Viber">
+<i class="fa-brands fa-viber text-lg"></i>
+</a>
+<a aria-label="WhatsApp" class="w-12 h-12 rounded-full bg-gradient-to-br from-green-600 to-teal-600 flex items-center justify-center text-white hover:shadow-lg transform hover:scale-110 transition-all duration-300" href="https://api.whatsapp.com/send/?phone=79525425892&amp;text=Обращение+из+Яндекс+Карт%0AЗдравствуйте%21+Меня+заинтересовало+ваше+предложение&amp;type=phone_number&amp;app_absent=0" rel="noopener" target="_blank" title="WhatsApp">
+<i class="fa-brands fa-whatsapp text-lg"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contacts / Footer -->
+<footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16" id="contacts">
+<div class="container">
+<div class="grid md:grid-cols-4 gap-8 mb-12">
+<div class="animate-fade-in-up">
+<div class="flex items-center space-x-2 mb-4">
+<div class="bg-gradient-to-br from-emerald-600 to-teal-600 p-2 rounded-lg"><i class="fa-solid fa-heart text-white text-xl"></i></div>
+<h4 class="text-xl font-bold">Наследие</h4>
+</div>
+<p class="text-gray-400 leading-relaxed">Пансионат для пожилых. Профессиональная забота о ваших близких с любовью и вниманием.</p>
+</div>
+<div class="animate-fade-in-up" style="animation-delay: 0.1s;">
+<h4 class="font-bold mb-4 text-lg">Контакты</h4>
+<div class="space-y-2">
+<p><a class="text-emerald-400 hover:text-emerald-300 transition-colors" href="tel:+79525425892">+7 (952) 542-58-92</a></p>
+<p><a class="text-emerald-400 hover:text-emerald-300 transition-colors" href="tel:+79515512202">+7 (951) 551-22-02</a></p>
+<p><a class="text-emerald-400 hover:text-emerald-300 transition-colors" href="mailto:info@teplydom.ru">info@teplydom.ru</a></p>
+<p class="text-gray-400">Работаем 24/7</p>
+</div>
+</div>
+<div class="animate-fade-in-up" style="animation-delay: 0.2s;">
+<h4 class="font-bold mb-4 text-lg">Адрес</h4>
+<div class="space-y-2">
+<p class="text-gray-300">г. Воронеж</p>
+<p class="text-gray-300">Лебедянская ул., 8</p>
+<p><a class="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-full font-semibold" href="https://yandex.ru/maps/-/CLDMi83C" rel="noopener" target="_blank">Найти на карте →</a></p>
+</div>
+</div>
+<div class="animate-fade-in-up" style="animation-delay: 0.3s;">
+<h4 class="font-bold mb-4 text-lg">Соцсети</h4>
+<div class="flex flex-wrap gap-3">
+<a class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center hover:scale-110 transform transition-all duration-300 hover:shadow-lg" href="https://vk.com/your_group" rel="noopener" target="_blank">
+<i class="fa-brands fa-vk text-sm"></i>
+</a>
+<a class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center hover:scale-110 transform transition-all duration-300 hover:shadow-lg" href="https://telegram.org/" rel="noopener" target="_blank">
+<i class="fa-brands fa-telegram text-sm"></i>
+</a>
+<a class="w-10 h-10 rounded-full bg-gradient-to-br from-green-600 to-teal-600 flex items-center justify-center hover:scale-110 transform transition-all duration-300 hover:shadow-lg" href="https://api.whatsapp.com/send/?phone=79525425892&amp;text=Обращение+из+Яндекс+Карт%0AЗдравствуйте%21+Меня+заинтересовало+ваше+предложение&amp;type=phone_number&amp;app_absent=0" rel="noopener" target="_blank">
+<i class="fa-brands fa-whatsapp text-sm"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+<div>© <span id="current-year">2026</span> Наследие. Все права защищены.</div>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="hover:text-emerald-400 transition-colors" href="mailto:info@teplydom.ru?subject=Вопрос%20о%20конфиденциальности">Конфиденциальность</a>
+<a class="hover:text-emerald-400 transition-colors" href="#contacts">Контакты</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+if (window.AOS) {
+  AOS.init({ duration: 850, easing: 'ease-out-cubic', once: true });
+}
+
+const yearNode = document.getElementById('current-year');
+if (yearNode) yearNode.textContent = new Date().getFullYear();
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', function (event) {
+    const href = this.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (target) {
+      event.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+function toggleFaq(element) {
+  const content = element.nextElementSibling;
+  const icon = element.querySelector('.faq-icon');
+  if (!content || !icon) return;
+  const expanded = content.classList.toggle('active');
+  icon.classList.toggle('active', expanded);
+  element.setAttribute('aria-expanded', String(expanded));
+}
+
+function submitForm(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const data = new FormData(form);
+
+  const payload = {
+    name: String(data.get('name') || '').trim(),
+    phone: String(data.get('phone') || '').trim(),
+    email: String(data.get('email') || '').trim(),
+    date: String(data.get('date') || '').trim(),
+    message: String(data.get('message') || '').trim()
+  };
+
+  fetch("https://tg-bot1.fyrihyhbvymjifg.workers.dev/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  })
+  .then(response => {
+    if (!response.ok) throw new Error("Ошибка отправки");
+    const status = document.getElementById('form-message');
+    if (status) {
+      status.textContent = "Заявка отправлена!";
+      status.classList.remove('hidden');
+    }
+    form.reset();
+  })
+  .catch(() => {
+    alert("Не удалось отправить заявку. Попробуйте ещё раз.");
+  });
+}
+
+const menuToggle = document.getElementById('menu-toggle');
+const mainNav = document.getElementById('main-nav');
+if (menuToggle && mainNav) {
+  menuToggle.setAttribute('aria-label', 'Открыть меню');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.addEventListener('click', () => {
+    const isHidden = mainNav.classList.toggle('hidden');
+    menuToggle.setAttribute('aria-expanded', String(!isHidden));
+  });
+  mainNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 1024) {
+        mainNav.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+}
+</script></body>
+</html>
