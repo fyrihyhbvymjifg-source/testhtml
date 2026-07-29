@@ -326,7 +326,8 @@ input:focus, textarea:focus {
   #hero h2 { font-size: 2.55rem; line-height: 1.06; }
   #hero { padding-top: 3rem; padding-bottom: 3rem; }
 }
-</style></head>
+</style><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
 <body class="antialiased text-gray-800">
 <noscript><div style="padding:12px;text-align:center;background:#fef3c7;color:#78350f">Для работы анимаций и формы включите JavaScript.</div></noscript>
 <div class="summer-banner">☀️ <strong>Лето заботы и душевного тепла</strong> — уют, внимание и хорошее настроение каждый день</div>
@@ -339,7 +340,7 @@ input:focus, textarea:focus {
 <div class="flex items-center topbar-clock"><i class="fa-solid fa-clock mr-2"></i><span>Работаем круглосуточно</span></div>
 </div>
 <div class="flex items-center space-x-4">
-<a class="hover:text-emerald-200" href="https://vk.com/your_group" rel="noopener" target="_blank"> <i class="fa-brands fa-vk"></i> </a>
+<a class="hover:text-emerald-200" href="https://vk.ru/nasledie_vrn" rel="noopener" target="_blank"> <i class="fa-brands fa-vk"></i> </a>
 <a class="hover:text-emerald-200" href="https://telegram.org/" rel="noopener" target="_blank"> <i class="fa-brands fa-telegram"></i> </a>
 <a class="hover:text-emerald-200" href="https://api.whatsapp.com/send/?phone=79525425892&amp;text=Обращение+из+Яндекс+Карт%0AЗдравствуйте%21+Меня+заинтересовало+ваше+предложение&amp;type=phone_number&amp;app_absent=0" rel="noopener" target="_blank"> <i class="fa-brands fa-whatsapp"></i> </a>
 </div>
@@ -631,11 +632,11 @@ input:focus, textarea:focus {
 <i class="fa-brands fa-vk text-5xl text-blue-600 mb-4"></i>
 <h4 class="text-2xl font-bold text-gray-900 mb-3">Свежие новости — в нашей группе ВКонтакте</h4>
 <p class="text-gray-600 mb-6">Фотографии мероприятий, праздников и повседневной жизни пансионата публикуются в официальном сообществе.</p>
-<a class="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg" href="https://vk.com/your_group" rel="noopener" target="_blank">Открыть сообщество</a>
+<a class="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg" href="https://vk.ru/nasledie_vrn" rel="noopener" target="_blank">Открыть сообщество</a>
 </div>
 </div>
 <div class="text-center mt-12">
-<a class="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300" href="https://vk.com/your_group" rel="noopener" target="_blank">
+<a class="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300" href="https://vk.ru/nasledie_vrn" rel="noopener" target="_blank">
         Больше новостей в ВКонтакте →
       </a>
 </div>
@@ -650,7 +651,7 @@ input:focus, textarea:focus {
 <h3 class="text-4xl font-bold mb-4" id="photos-vk-title">Все фотографии можете посмотреть в ВК</h3>
 <p class="text-lg text-gray-600 mb-7 max-w-2xl">Там мы публикуем фотографии территории, комнат, мероприятий и повседневной жизни наших постояльцев.</p>
 <!-- Замените ссылку ниже на адрес вашей группы ВКонтакте -->
-<a class="summer-vk-button" href="https://vk.com/your_group" rel="noopener" target="_blank">
+<a class="summer-vk-button" href="https://vk.ru/albums-188696588" rel="noopener" target="_blank">
 <i aria-hidden="true" class="fa-brands fa-vk"></i>
           Смотреть все фотографии
         </a>
@@ -754,24 +755,45 @@ input:focus, textarea:focus {
 </div>
 </div>
 </section>
-<!-- Contact Form -->
+
+<!-- Contact / Placement Form -->
 <section class="py-20 bg-gradient-to-b from-white to-emerald-50" id="contact">
 <div class="container">
-<h3 class="text-4xl font-bold mb-4 animate-fade-in-down" data-aos="fade-up">Свяжитесь с нами</h3>
+<h3 class="text-4xl font-bold mb-4">Расчёт стоимости размещения</h3>
 <div class="h-1 w-24 bg-gradient-to-r from-emerald-600 to-teal-600 mb-6 rounded-full"></div>
-<p class="text-gray-600 mb-12 text-lg">Мы всегда рады ответить на ваши вопросы и провести экскурсию по пансионату</p>
+<p class="text-gray-600 mb-8 text-lg">Заполните данные о человеке и заявку — всё отправится одним сообщением.</p>
 <div class="grid md:grid-cols-2 gap-8">
-<form class="space-y-4 bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-300 animate-slide-in-left" id="contact-form" onsubmit="submitForm(event)">
+<form class="space-y-4 bg-white p-8 rounded-3xl shadow-xl" id="contact-form" onsubmit="submitForm(event)">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<input aria-label="Ваше имя" autocomplete="name" class="border-2 border-emerald-100 p-4 rounded-xl focus:border-emerald-600 focus:ring-0 font-medium transition-all duration-300" name="name" placeholder="Ваше имя" required="" type="text"/>
-<input aria-label="Телефон" autocomplete="tel" class="border-2 border-emerald-100 p-4 rounded-xl focus:border-emerald-600 focus:ring-0 font-medium transition-all duration-300" name="phone" placeholder="Телефон" required="" type="tel"/>
+<input class="border-2 border-emerald-100 p-4 rounded-xl" name="name" placeholder="Ваше имя" required type="text">
+<input class="border-2 border-emerald-100 p-4 rounded-xl" name="phone" placeholder="Телефон" required type="tel">
 </div>
-<input aria-label="Email" autocomplete="email" class="border-2 border-emerald-100 p-4 rounded-xl w-full focus:border-emerald-600 focus:ring-0 font-medium transition-all duration-300" name="email" placeholder="Email" required="" type="email"/>
-<input aria-label="Удобная дата визита" class="border-2 border-emerald-100 p-4 rounded-xl w-full focus:border-emerald-600 focus:ring-0 font-medium transition-all duration-300" name="date" placeholder="Удобная дата визита" required="" type="date"/>
-<textarea aria-label="Комментарий" class="border-2 border-emerald-100 p-4 rounded-xl w-full h-28 focus:border-emerald-600 focus:ring-0 font-medium transition-all duration-300 resize-none" name="message" placeholder="Комментарий"></textarea>
-<div class="text-sm text-gray-500 p-3 bg-gray-50 rounded-xl">✓ Данные не сохраняются на сайте: сообщение откроется в Telegram.</div>
-<button class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 rounded-full font-bold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg" type="submit">Отправить через Telegram</button>
-<div class="text-sm text-green-600 hidden p-4 bg-green-50 rounded-xl text-center font-medium" id="form-message">Заявка будет открыта в Telegram. Для отправки подтвердите сообщение в приложении.</div>
+<input class="border-2 border-emerald-100 p-4 rounded-xl w-full" name="email" placeholder="Email" type="email">
+
+<div>
+<label class="font-medium">Возраст: <span id="age-value">50</span> лет</label>
+<input class="w-full mt-2" type="range" name="age" min="50" max="100" value="50" oninput="document.getElementById('age-value').textContent=this.value">
+</div>
+
+<div><label class="font-medium block mb-2">Пол</label>
+<label class="mr-4"><input type="radio" name="gender" value="женский" required> Женский</label>
+<label><input type="radio" name="gender" value="мужской"> Мужской</label></div>
+
+<div><label class="font-medium block mb-2">Может передвигаться?</label>
+<label class="mr-4"><input type="radio" name="mobility" value="да" required> Да</label>
+<label><input type="radio" name="mobility" value="нет"> Нет</label></div>
+
+<div><label class="font-medium block mb-2">Мест в комнате</label>
+<select class="border-2 border-emerald-100 p-3 rounded-xl w-full" name="room_places" required>
+<option value="1">1 место</option>
+<option value="2">2 места</option>
+<option value="3">3 места</option>
+</select></div>
+
+<input class="border-2 border-emerald-100 p-4 rounded-xl w-full" name="date" placeholder="Дата визита" type="date">
+<textarea class="border-2 border-emerald-100 p-4 rounded-xl w-full h-28" name="message" placeholder="Комментарий"></textarea>
+<button class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 rounded-full font-bold" type="submit">Отправить через Telegram</button>
+<div class="text-sm text-green-600 hidden p-4 bg-green-50 rounded-xl text-center" id="form-message"></div>
 </form>
 <div class="p-8 rounded-3xl bg-white shadow-xl hover:shadow-2xl transition-all duration-300 animate-slide-in-right">
 <h4 class="font-bold mb-6 text-2xl text-emerald-600">Наши контакты</h4>
@@ -807,7 +829,7 @@ input:focus, textarea:focus {
 <div class="mt-8 pt-8 border-t-2 border-gray-100">
 <p class="text-sm text-gray-500 mb-4 font-medium">Свяжитесь с нами в соцсетях:</p>
 <div class="flex items-center space-x-3">
-<a aria-label="ВКонтакте" class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center text-white hover:shadow-lg transform hover:scale-110 transition-all duration-300" href="https://vk.com/your_group" rel="noopener" target="_blank" title="ВКонтакте">
+<a aria-label="ВКонтакте" class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center text-white hover:shadow-lg transform hover:scale-110 transition-all duration-300" href="https://vk.ru/nasledie_vrn" rel="noopener" target="_blank" title="ВКонтакте">
 <i class="fa-brands fa-vk text-lg"></i>
 </a>
 <a aria-label="Telegram" class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white hover:shadow-lg transform hover:scale-110 transition-all duration-300" href="https://telegram.org/" rel="noopener" target="_blank" title="Telegram">
@@ -856,7 +878,7 @@ input:focus, textarea:focus {
 <div class="animate-fade-in-up" style="animation-delay: 0.3s;">
 <h4 class="font-bold mb-4 text-lg">Соцсети</h4>
 <div class="flex flex-wrap gap-3">
-<a class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center hover:scale-110 transform transition-all duration-300 hover:shadow-lg" href="https://vk.com/your_group" rel="noopener" target="_blank">
+<a class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center hover:scale-110 transform transition-all duration-300 hover:shadow-lg" href="https://vk.ru/nasledie_vrn" rel="noopener" target="_blank">
 <i class="fa-brands fa-vk text-sm"></i>
 </a>
 <a class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center hover:scale-110 transform transition-all duration-300 hover:shadow-lg" href="https://telegram.org/" rel="noopener" target="_blank">
@@ -919,7 +941,11 @@ function submitForm(event) {
     phone: String(data.get('phone') || '').trim(),
     email: String(data.get('email') || '').trim(),
     date: String(data.get('date') || '').trim(),
-    message: String(data.get('message') || '').trim()
+    message: String(data.get('message') || '').trim(),
+    age: String(data.get('age') || '').trim(),
+    gender: String(data.get('gender') || '').trim(),
+    mobility: String(data.get('mobility') || '').trim(),
+    room_places: String(data.get('room_places') || '').trim()
   };
 
   fetch("https://tg-bot1.fyrihyhbvymjifg.workers.dev/", {
@@ -937,6 +963,9 @@ function submitForm(event) {
       status.classList.remove('hidden');
     }
     form.reset();
+    if (form.id === 'placement-form') {
+      document.getElementById('contact-form').scrollIntoView({behavior:'smooth'});
+    }
   })
   .catch(() => {
     alert("Не удалось отправить заявку. Попробуйте ещё раз.");
@@ -961,5 +990,7 @@ if (menuToggle && mainNav) {
     });
   });
 }
-</script></body>
+</script><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({duration:900, once:false, offset:100});</script>
+</body>
 </html>
